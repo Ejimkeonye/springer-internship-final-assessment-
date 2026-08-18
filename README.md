@@ -8,3 +8,7 @@ This repo demonstrates a small end-to-end DevOps workflow: a Python script
 is containerized with Docker, automatically run on every push via GitHub
 Actions, deployed as a Nomad job, and monitored with logs forwarded to
 Grafana Loki.
+
+## Docker
+docker build -t hello-devops .
+docker run --rm hello-devops
