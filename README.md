@@ -1,3 +1,9 @@
+
+
+![CI](https://github.com/Ejimkeonye/springer-internship-final-assessment-/actions/workflows/ci.yml/badge.svg)
+
+
+
 # DevOps Intern Final Assessment
 
 **Name:** Ejim Egwu 
