@@ -24,3 +24,8 @@ nomad agent -dev -config=docker.hcl
 nomad job run nomad/hello.nomad
 nomad job status hello
 nomad alloc logs <alloc-id>
+
+## Monitoring (Loki)
+MSYS_NO_PATHCONV=1 docker run -d --name=loki -p 3100:3100 grafana/loki:2.9.0 -config.file=/etc/loki/local-config.yaml
+docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+MSYS_NO_PATHCONV=1 docker run --rm --log-driver=loki --log-opt loki-url="http://localhost:3100/loki/api/v1/push" hello-devops

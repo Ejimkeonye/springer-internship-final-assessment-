@@ -1,0 +1,13 @@
+How I started Loki:
+MSYS_NO_PATHCONV=1 docker run -d --name=loki -p 3100:3100 grafana/loki:2.9.0 -config.file=/etc/loki/local-config.yaml
+
+How logs are forwarded:
+Installed the Loki Docker logging-driver plugin, then ran the hello-devops
+container with --log-driver=loki so its stdout is shipped directly to Loki
+over http://localhost:3100/loki/api/v1/push.
+
+Command to run the container with logs forwarded to Loki:
+MSYS_NO_PATHCONV=1 docker run --rm --log-driver=loki --log-opt loki-url="http://localhost:3100/loki/api/v1/push" hello-devops
+
+Command used to view logs:
+curl -G -s "http://localhost:3100/loki/api/v1/query_range" --data-urlencode 'query={container_name=~".+"}'
