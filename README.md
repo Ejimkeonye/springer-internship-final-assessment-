@@ -18,3 +18,9 @@ Grafana Loki.
 ## Docker
 docker build -t hello-devops .
 docker run --rm hello-devops
+
+## Nomad
+nomad agent -dev -config=docker.hcl
+nomad job run nomad/hello.nomad
+nomad job status hello
+nomad alloc logs <alloc-id>
